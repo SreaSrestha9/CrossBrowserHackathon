@@ -79,14 +79,19 @@ namespace HackathonApplitools
             return SiteDriver.JsExecutor.ExecuteScript(script);
         }
 
-       
+        public static object ExecuteModern(string script)
+        {
+            return SiteDriver.JsExecutorModern.ExecuteScript(script);
+        }
+
         /// <summary>
         /// Click on an element.
         /// </summary>
         /// <param name="select">An element.</param>
         /// <param name="selector">The locating mechanism to use.</param>
         /// <returns></returns>
-       
+
+
 
         public static IWebElement FindElement(string select)
         {
@@ -94,7 +99,10 @@ namespace HackathonApplitools
         }
 
 
-
+        public static IWebElement FindElementModern(string select)
+        {
+            return (IWebElement)ExecuteModern(string.Format(JQueryScript, select));
+        }
 
         public static List<string> FindElements(string select, string selectSelector = "Text", bool isNull = false, How selector = How.CssSelector)
         {

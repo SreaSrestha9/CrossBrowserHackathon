@@ -17,7 +17,7 @@ namespace HackathonApplitools.PageObjects
         public const string ProductSizeListCssSelector =
             "div.prod_options>div>div>div.custom-select-form>select>option";
 
-        public const string ProductSelectorCssSelector = "div.prod_options>div>div>div.custom-select-form>select";
+        public const string ProductSelectorCssSelector = "div.prod_options>div div.nice-select";
         public const string SelectedProduct = "div.prod_options>div>div>div.custom-select-form>div.nice-select>span";
         public const string IncreaseButtonCssSelector = "div#DIV__incbuttoni__104";
         public const string DecreaseButtonCssSelector = "div#DIV__decbuttoni__105";
@@ -32,9 +32,9 @@ namespace HackathonApplitools.PageObjects
         public const string QuickLinksCssTemplate = "footer div:has(h3:contains({0}))>div>ul>li>a:contains({1})";
         public const string QuickLinksListCssSelector = "footer div:has(h3:contains(Quick Links))>div>ul>li>a";
         public const string ContactsHomeIconCssSelector = "footer div:has(h3:contains(Contacts))>div>ul>li>i.ti-home";
-        public const string ContactLocationCssSelector = "li#LI____440";
+        public const string ContactLocationCssSelector = "li:has(i[class = ti-home])";
         public const string ContactEmailIconCssSelector = "footer div:has(h3:contains(Contacts))>div>ul>li>i.ti-email";
-        public const string EmailCssSelector = "li#LI____443>A";
+        public const string EmailCssSelector = "li:has(i[class = ti-email])>a";
 
         public const string LanguageListCssSelector = "div.lang-selector>select>option";
         public const string SelectedLanguageCssSelector = "div.lang-selector>select>option[selected]";
@@ -44,7 +44,7 @@ namespace HackathonApplitools.PageObjects
         public const string KeepInTouchCssSelector = "h3:contains(Keep in touch)";
         public const string EmailInputCssSelector = "div#newsletter>div>input";
         public const string SubmitButtonCssSelector = "div#newsletter>div>button";
-
+        public const string Applitools2020CssSelector = "ul.additional_links>li>span";
         #endregion
     }
 }

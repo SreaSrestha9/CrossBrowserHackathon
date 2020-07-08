@@ -16,7 +16,11 @@ namespace HackathonApplitools.PageServices
     {
         public IWebDriver Driver { get { return SiteDriver.Driver; } }
         private static IJavaScriptExecutor _javascriptexecutor;
-        
+
+        public IWebDriver _Driver
+        {
+            get { return SiteDriver._Driver; }
+        }
 
         #region Constructor
 
@@ -83,6 +87,11 @@ namespace HackathonApplitools.PageServices
 
         }
 
+
+        public void ClickOnFilterOptionByHeaderAndOptionModern(string header, string option) => JavascriptExecutor
+            .FindElementModern(string.Format(HomePageObjects.SideFilterOptionCssTemplate, header, option))
+            .Click();
+
         public void ClickOnFilterOptionByHeaderAndOption(string header, string option) => JavascriptExecutor
             .FindElement(string.Format(HomePageObjects.SideFilterOptionCssTemplate, header, option))
             .Click();
@@ -110,6 +119,12 @@ namespace HackathonApplitools.PageServices
         public bool IsFilterResetButtonDisabledByButtonId(string id) => JavascriptExecutor
             .IsElementPresent(string.Format(HomePageObjects.SideFilterButtonDisabledCssTemplate, id));
 
+        public void ClickFilterButtonModern()
+        {
+            JavascriptExecutor.FindElementModern(string.Format(HomePageObjects.SideFilterResetButtonCssTemplate, "Filter")).Click();
+            SiteDriver.WaitToLoadNew(100);
+        }
+
         public void ClickFilterButton()
         {
             JavascriptExecutor.FindElement(string.Format(HomePageObjects.SideFilterResetButtonCssTemplate, "Filter")).Click();
@@ -124,6 +139,8 @@ namespace HackathonApplitools.PageServices
         public string GetSelectedSortOption() =>
             SiteDriver.FindElement(HomePageObjects.SelectedSortOptionCssSelector, How.CssSelector).Text.Trim();
 
+        public bool IsSortOptionPresent() =>
+            SiteDriver.IsElementPresent(HomePageObjects.SelectedSortOptionCssSelector, How.CssSelector);
         public List<string> GetSortOptions() =>
             SiteDriver.FindDisplayedElementsText(HomePageObjects.SortOptionsCssSelector, How.CssSelector).Select(x=>x.Trim()).ToList();
 
@@ -137,6 +154,11 @@ namespace HackathonApplitools.PageServices
         public string GetProductsCount() =>
             SiteDriver.FindElements(HomePageObjects.ProductsCssSelector, How.CssSelector).Count().ToString();
 
+        public ProductPage ClickOnProductImageByProductNameModern(string name)
+        {
+            SiteDriver.FindElementModern(string.Format(HomePageObjects.ProductDetailLinkByImageCssTemplate, name), How.CssSelector).Click();
+            return new ProductPage();
+        }
         public ProductPage ClickOnProductImageByProductName(string name)
         {
             SiteDriver.FindElement(string.Format(HomePageObjects.ProductDetailLinkByImageCssTemplate, name), How.CssSelector).Click();
