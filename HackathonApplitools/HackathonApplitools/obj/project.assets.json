@@ -5509,11 +5509,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HackathonApplitools\\HackathonApplitools\\HackathonApplitools.csproj",
+      "projectUniqueName": "D:\\CrossBrowserHackathon\\HackathonApplitools\\HackathonApplitools\\HackathonApplitools.csproj",
       "projectName": "HackathonApplitools",
-      "projectPath": "D:\\HackathonApplitools\\HackathonApplitools\\HackathonApplitools.csproj",
+      "projectPath": "D:\\CrossBrowserHackathon\\HackathonApplitools\\HackathonApplitools\\HackathonApplitools.csproj",
       "packagesPath": "C:\\Users\\i81378\\.nuget\\packages\\",
-      "outputPath": "D:\\HackathonApplitools\\HackathonApplitools\\obj\\",
+      "outputPath": "D:\\CrossBrowserHackathon\\HackathonApplitools\\HackathonApplitools\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
