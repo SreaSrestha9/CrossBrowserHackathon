@@ -13,6 +13,7 @@ namespace HackathonApplitools
         {
             Console.WriteLine("{0}: Expected <{1}> , Actual <{2}>", message, expected, actual);
             Assert.AreEqual(expected, actual);
+            
         }
 
         public static void ShouldCollectionBeEqual(this IList<string> actualList, IList<string> expectedList, string message, bool takeScreenshot = false, params object[] args)

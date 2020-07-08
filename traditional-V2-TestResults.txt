@@ -1,0 +1,111 @@
+Task: 1, Test Name: IsAppliFashionLogoPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsSearchInputPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsSearchButtonPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrome, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrome, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrome, Status: True
+Task: 1, Test Name: IsCartIconPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsAppliFashionLogoPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsSearchInputPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsSearchButtonPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrometablet, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrometablet, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser chrometablet, Status: True
+Task: 1, Test Name: IsCartIconPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsAppliFashionLogoPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsSearchInputPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsSearchButtonPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser mobile, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser mobile, Status: True
+Task: 1, Test Name: IsAccountWishlistIconPresentByIconName, Browser mobile, Status: True
+Task: 1, Test Name: IsCartIconPresent, Browser mobile, Status: True
+Task: 2, Test Name: IsSidefilterQuantityPresentByHeaderAndOption, Browser chrome, Status: True
+Task: 2, Test Name: IsFilterResetButtonPresentByButtonName, Browser chrome, Status: True
+Task: 2, Test Name: IsFilterResetButtonPresentByButtonName, Browser chrome, Status: True
+Task: 2, Test Name: IsFilterResetButtonDisabledByButtonId, Browser chrome, Status: True
+Task: 2, Test Name: IsFilterResetButtonDisabledByButtonId, Browser chrome, Status: True
+Task: 2, Test Name: IsFilterResetButtonDisabledByButtonId, Browser chrome, Status: False
+Task: 1, Test Name: IsTopBannerPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsSortOptionPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsGridViewIconPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsListViewIconPresent, Browser chrome, Status: True
+Task: 1, Test Name: IsTopBannerPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsSortOptionPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsGridViewIconPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsListViewIconPresent, Browser chrometablet, Status: True
+Task: 1, Test Name: IsTopBannerPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsSortOptionPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsGridViewIconPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsListViewIconPresent, Browser mobile, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Quick Links, Browser chrome, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Contacts, Browser chrome, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Keep in touch, Browser chrome, Status: True
+Task: 1, Test Name: IsHomeIconPresentInContacts, Browser chrome, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Quick Links, Browser chrometablet, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Contacts, Browser chrometablet, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Keep in touch, Browser chrometablet, Status: True
+Task: 1, Test Name: IsHomeIconPresentInContacts, Browser chrometablet, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Quick Links, Browser mobile, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Contacts, Browser mobile, Status: True
+Task: 1, Test Name: IsFooterHeaderPresentByFooterName Keep in touch, Browser mobile, Status: True
+Task: 1, Test Name: IsHomeIconPresentInContacts, Browser mobile, Status: True
+Task: 3, Test Name: IsPageHeaderPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsAppliFashionLogoPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsMainHeaderPresent Home, Browser chrome, Status: True
+Task: 3, Test Name: IsMainHeaderPresent MEN, Browser chrome, Status: True
+Task: 3, Test Name: IsMainHeaderPresent WOMEN, Browser chrome, Status: True
+Task: 3, Test Name: IsMainHeaderPresent RUNNING, Browser chrome, Status: True
+Task: 3, Test Name: IsMainHeaderPresent TRAINING, Browser chrome, Status: True
+Task: 3, Test Name: IsSearchInputPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsSearchButtonPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsAccountIconPresentByIconName , Browser chrome, Status: True
+Task: 3, Test Name: IsWishListIconPresentByIconName , Browser chrome, Status: True
+Task: 3, Test Name: IsCartIconPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsCartQuantityPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsProductImagePresent, Browser chrome, Status: True
+Task: 3, Test Name: IsProductStarReviewPresent, Browser chrome, Status: True
+Task: 3, Test Name: Is Size label present, Browser chrome, Status: True
+Task: 3, Test Name: Is Quantity label present, Browser chrome, Status: True
+Task: 3, Test Name: IsProductReviewPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsSizeInputPresent, Browser chrome, Status: True
+Task: 3, Test Name: IsSelectedsizeSmall, Browser chrome, Status: False
+Task: 3, Test Name: IsPageHeaderPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsAppliFashionLogoPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsMainHeaderPresent Home, Browser chrometablet, Status: True
+Task: 3, Test Name: IsMainHeaderPresent MEN, Browser chrometablet, Status: True
+Task: 3, Test Name: IsMainHeaderPresent WOMEN, Browser chrometablet, Status: True
+Task: 3, Test Name: IsMainHeaderPresent RUNNING, Browser chrometablet, Status: True
+Task: 3, Test Name: IsMainHeaderPresent TRAINING, Browser chrometablet, Status: True
+Task: 3, Test Name: IsSearchInputPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsSearchButtonPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsAccountIconPresentByIconName , Browser chrometablet, Status: True
+Task: 3, Test Name: IsWishListIconPresentByIconName , Browser chrometablet, Status: True
+Task: 3, Test Name: IsCartIconPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsCartQuantityPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsProductImagePresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsProductStarReviewPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: Is Size label present, Browser chrometablet, Status: True
+Task: 3, Test Name: Is Quantity label present, Browser chrometablet, Status: True
+Task: 3, Test Name: IsProductReviewPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsSizeInputPresent, Browser chrometablet, Status: True
+Task: 3, Test Name: IsSelectedsizeSmall, Browser chrometablet, Status: False
+Task: 3, Test Name: IsPageHeaderPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsAppliFashionLogoPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsMainHeaderPresent Home, Browser mobile, Status: True
+Task: 3, Test Name: IsMainHeaderPresent MEN, Browser mobile, Status: True
+Task: 3, Test Name: IsMainHeaderPresent WOMEN, Browser mobile, Status: True
+Task: 3, Test Name: IsMainHeaderPresent RUNNING, Browser mobile, Status: True
+Task: 3, Test Name: IsMainHeaderPresent TRAINING, Browser mobile, Status: True
+Task: 3, Test Name: IsSearchInputPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsSearchButtonPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsAccountIconPresentByIconName , Browser mobile, Status: True
+Task: 3, Test Name: IsWishListIconPresentByIconName , Browser mobile, Status: True
+Task: 3, Test Name: IsCartIconPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsCartQuantityPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsProductImagePresent, Browser mobile, Status: True
+Task: 3, Test Name: IsProductStarReviewPresent, Browser mobile, Status: True
+Task: 3, Test Name: Is Size label present, Browser mobile, Status: True
+Task: 3, Test Name: Is Quantity label present, Browser mobile, Status: True
+Task: 3, Test Name: IsProductReviewPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsSizeInputPresent, Browser mobile, Status: True
+Task: 3, Test Name: IsSelectedsizeSmall, Browser mobile, Status: False

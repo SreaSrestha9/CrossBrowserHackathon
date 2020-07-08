@@ -8,48 +8,34 @@ namespace HackathonApplitools.TestCases.TraditionalApproach
 {
     public class HomeTraditional2 : TraditionalTestBase
     {
-        public bool HackathonReport(int task, string testName, string browser, bool compatisonResult)
-        {
-
-            using (StreamWriter fs = new StreamWriter("traditional-V1-TestResults.txt", true))
-            {
-                string ReportContent = string.Format("Task: {0}, Test Name: {1}, Browser {2}, Status: {3}", task,
-                    testName, browser, compatisonResult);
-
-
-                fs.WriteLine(ReportContent);
-            }
-
-            //returns the result so that it can be used for further Assertions in the test code.
-            return compatisonResult;
-        }
-
-
         [Test]
         [TestCaseSource(typeof(TraditionalTestBase), nameof(BrowserToRunWith))]
         public void Verify_Header_bar_contents(string browserName)
         {
             Setup(browserName);
 
-            List<string> headerList = new List<string> { "HOME", "MEN", "WOMEN", "RUNNING", "TRAINING" };
-            var searchBoxPlaceholder = "Search over 10,000 shoes!";
-            Start(Urls.Version1);
-            Assert.IsTrue(homePage.IsAppliFashionLogoPresent(), "Is AppliFashion Logo present?");
-            homePage.GetMainMenuHeader().ShouldBeEqual(headerList, "Does header list match?");
-            homePage.IsSearchInputPresent().ShouldBeTrue("Is search input present?");
-            homePage.IsSearchButtonPresent().ShouldBeTrue("Is Search Button Present?");
-            homePage.GetDefaultSearchInputValue().ShouldBeEqual(searchBoxPlaceholder, "Placeholder should match");
-            homePage.IsAccountWishlistIconPresentByIconName("Account").ShouldBeTrue("Is account icon present?");
-            homePage.IsAccountWishlistIconPresentByIconName("Wishlist").ShouldBeTrue("Is account icon present?");
-            homePage.IsAccountWishlistIconPresentByIconName("Wishlist").ShouldBeTrue("Is account icon present?");
-            homePage.IsCartIconPresent().ShouldBeTrue("Is cart icon present?");
-            homePage.GetCartQuanity().ShouldBeEqual("2", "cart quantity should match");
+            //List<string> headerList = new List<string>{ "HOME", "MEN", "WOMEN", "RUNNING", "TRAINING" };
+            //var searchBoxPlaceholder = "Search over 10,000 shoes!";
+
+            Start(Urls.Version2);
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAppliFashionLogoPresent", browserName, homePage.IsAppliFashionLogoPresent()));
+            // Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAppliFashionLogoPresent", browserName, homePage.GetMainMenuHeader().ShouldBeEqual(headerList,"Does header list match?"));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsSearchInputPresent", browserName, homePage.IsSearchInputPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsSearchButtonPresent", browserName, homePage.IsSearchButtonPresent()));
+            //Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAppliFashionLogoPresent", browserName, homePage.GetDefaultSearchInputValue().ShouldBeEqual(searchBoxPlaceholder,"Placeholder should match"));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAccountWishlistIconPresentByIconName", browserName, homePage.IsAccountWishlistIconPresentByIconName("Account")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAccountWishlistIconPresentByIconName", browserName, homePage.IsAccountWishlistIconPresentByIconName("Wishlist")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAccountWishlistIconPresentByIconName", browserName, homePage.IsAccountWishlistIconPresentByIconName("Wishlist")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsCartIconPresent", browserName, homePage.IsCartIconPresent()));
+            //Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsAppliFashionLogoPresent", browserName, homePage.GetCartQuanity().ShouldBeEqual("2", "cart quantity should match"));
         }
 
         [Test]
-
-        public void Verify_side_filter_and_shopping_experience()
+        [TestCaseSource(typeof(TraditionalTestBase), nameof(BrowserToRunWith))]
+        public void Verify_side_filter_and_shopping_experience(string browserName)
         {
+            Setup(browserName);
+            Start(Urls.Version2);
             var sideFilterHeaders = new List<string> { "type", "colors", "brands", "price" };
             var typeList = new List<string> { "Soccer", "Basketball", "Running", "Training" };
             var colorList = new List<string> { "Black", "White", "Blue", "Green", "Yellow" };
@@ -65,16 +51,16 @@ namespace HackathonApplitools.TestCases.TraditionalApproach
             homePage.GetSideFilterOptionsByHeader(sideFilterHeaders[1]).ShouldCollectionBeEqual(colorList, "type list should match");
             homePage.GetSideFilterOptionsByHeader(sideFilterHeaders[2]).ShouldCollectionBeEqual(brandsList, "type list should match");
             homePage.GetSideFilterOptionsByHeader(sideFilterHeaders[3]).ShouldCollectionBeEqual(priceList, "type list should match");
-            homePage.IsSidefilterQuantityPresentByHeaderAndOption(sideFilterHeaders[0], typeList[0]).ShouldBeTrue("Is quantity present?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsSidefilterQuantityPresentByHeaderAndOption", browserName, homePage.IsSidefilterQuantityPresentByHeaderAndOption(sideFilterHeaders[0], typeList[0])));
 
             Console.Out.WriteLine("Verification if filter and reset buttons are enabled after selecting a filter");
-            homePage.IsFilterResetButtonPresentByButtonName(buttons[0]).ShouldBeTrue("Is Filter Button present?");
-            homePage.IsFilterResetButtonPresentByButtonName(buttons[1]).ShouldBeTrue("Is Reset Button present?");
-            homePage.IsFilterResetButtonDisabledByButtonId(ids[0]).ShouldBeTrue("Is Filter Button disabled?");
-            homePage.IsFilterResetButtonDisabledByButtonId(ids[1]).ShouldBeTrue("Is Reset Button disabled?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonPresentByButtonName", browserName, homePage.IsFilterResetButtonPresentByButtonName(buttons[0])));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonPresentByButtonName", browserName, homePage.IsFilterResetButtonPresentByButtonName(buttons[1])));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonDisabledByButtonId", browserName, homePage.IsFilterResetButtonDisabledByButtonId(ids[0])));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonDisabledByButtonId", browserName, homePage.IsFilterResetButtonDisabledByButtonId(ids[1])));
             homePage.ClickOnFilterOptionByHeaderAndOption(sideFilterHeaders[0], typeList[0]);
-            homePage.IsFilterResetButtonDisabledByButtonId(ids[0]).ShouldBeFalse("Is Filter Button disabled?");
-            homePage.IsFilterResetButtonDisabledByButtonId(ids[1]).ShouldBeFalse("Is Reset Button disabled?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonDisabledByButtonId", browserName, homePage.IsFilterResetButtonDisabledByButtonId(ids[0])));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, "IsFilterResetButtonDisabledByButtonId", browserName, homePage.IsFilterResetButtonDisabledByButtonId(ids[1])));
 
             Console.Out.WriteLine("Verification shopping experience");
             var selectedFilterQuantity =
@@ -86,22 +72,26 @@ namespace HackathonApplitools.TestCases.TraditionalApproach
             Console.Out.WriteLine("Verification of displayed products");
             foreach (var id in productIds)
             {
-                homePage.IsDiscountBannerPresentById(id).ShouldBeTrue($"Is discount banner present for {id}");
-                homePage.IsCountDownPresentById(id).ShouldBeTrue($"Is count down present for {id}");
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsDiscountBannerPresentById for {id}", browserName, homePage.IsDiscountBannerPresentById(id)));
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsCountDownPresentById for {id}", browserName, homePage.IsCountDownPresentById(id)));
 
                 if (id.Equals(productIds[0]))
                 {
                     homePage.GetOldPriceList(id).ShouldBeEqual("$48.00", "Old price should match");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____223").ShouldBeTrue("Wishlist icon should be present");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____227").ShouldBeTrue("Add to compare icon should be present");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____231").ShouldBeTrue("Add to cart icon should be present");
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsAddToFavoritePresent for {id}", browserName, homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____223")));
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2,
+                        $"IsAddComparePresentByIds for {id}", browserName,
+                        homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____227")));
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2,
+                        $"IsAddCartPresentByIds for {id}", browserName,
+                        homePage.IsAddToFavoriteCompareCartPresentByIds("UL____222", "LI____231")));
                 }
                 else
                 {
                     homePage.GetOldPriceList(id).ShouldBeEqual("$90.00", "Old price should match");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____248").ShouldBeTrue("Wishlist icon should be present");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____252").ShouldBeTrue("Add to compare icon should be present");
-                    homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____256").ShouldBeTrue("Add to cart icon should be present");
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsAddToFavoritePresent for {id}", browserName, homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____248")));
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsAddComparePresentByIds for {id}", browserName, homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____252")));
+                    Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 2, $"IsAddCartPresentByIds for {id}", browserName, homePage.IsAddToFavoriteCompareCartPresentByIds("UL____247", "LI____256")));
                 }
             }
 
@@ -112,48 +102,107 @@ namespace HackathonApplitools.TestCases.TraditionalApproach
 
 
         [Test]
-
-        public void Verify_top_banner_and_tool_Box_elements()
+        [TestCaseSource(typeof(TraditionalTestBase), nameof(BrowserToRunWith))]
+        public void Verify_top_banner_and_tool_Box_elements(string browserName)
         {
-            homePage.IsTopBannerPresent().ShouldBeTrue("Top banner should be present");
+
+            Setup(browserName); 
+            Start(Urls.Version2);
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsTopBannerPresent", browserName, homePage.IsTopBannerPresent()));
             homePage.GetSelectedSortOption().ShouldBeEqual("Sort by popularity", "By default Sort by popularity options should be selected");
             homePage.GetSortOptions().ShouldCollectionBeEqual(new List<string> { "Sort by popularity", "Sort by average rating", "Sort by newness", "Sort by price: low to high", "Sort by price: high to" }, "Sort options should match");
-            homePage.IsGridViewIconPresent().ShouldBeTrue("Is grid view icon present?");
-            homePage.IsListViewIconPresent().ShouldBeTrue("Is List View Icon Present?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsSortOptionPresent", browserName,
+                homePage.IsSortOptionPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsGridViewIconPresent", browserName, homePage.IsGridViewIconPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsListViewIconPresent", browserName, homePage.IsListViewIconPresent()));
         }
 
         [Test]
-
-        public void Verify_footer_content_for_home_page()
+        [TestCaseSource(typeof(TraditionalTestBase), nameof(BrowserToRunWith))]
+        public void Verify_footer_content_for_home_page(string browserName)
         {
+            Setup(browserName);
+            Start(Urls.Version2);
             var footerheaders = new List<string> { "Quick Links", "Contacts", "Keep in touch" };
             var additionalLinks = new List<string> { "Terms and conditions", "Privacy", "© 2020 Applitools" };
             foreach (var header in footerheaders)
             {
-                homePage.IsFooterHeaderPresentByFooterName(header).ShouldBeTrue($"Is {header} header present");
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, $"IsFooterHeaderPresentByFooterName {header}", browserName, homePage.IsFooterHeaderPresentByFooterName(header)));
             }
             homePage.GetQuickLinks().ShouldCollectionBeEqual(new List<string> { "About us", "Faq", "Help", "My account", "Blog", "Contacts" }, "QuickLinks should match");
-            homePage.IsHomeIconPresentInContacts().ShouldBeTrue("Is home icon present?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsHomeIconPresentInContacts", browserName, homePage.IsHomeIconPresentInContacts()));
             homePage.GetContactLocation().ShouldBeEqual("155 Bovet Rd #600 San Mateo, CA 94402", "Location should match");
-            homePage.IsMailIconPresentInContact().ShouldBeTrue("Is mail icon present?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsEmailInputPresent", browserName, homePage.IsEmailInputPresent()));
             homePage.GetEmailAddressOfContact().ShouldBeEqual("srd@applitools.com", "Email should match");
             homePage.GetSelectedLanguaue().ShouldBeEqual("English", "English language should be selected");
             homePage.GetLanguages().ShouldCollectionBeEqual(new List<string> { "English", "French", "Spanish", "Russian" }, "Languages should match");
             homePage.GetSelectedCurrency().ShouldBeEqual("US Dollars", "Selected currency should be US Dollars");
             homePage.GetCurrencies().ShouldCollectionBeEqual(new List<string> { "US Dollars", "Euro" }, "Currencies should match");
-            homePage.IsEmailInputPresent().ShouldBeTrue("Is email input present?");
-            homePage.IsSubmitIconPresent().ShouldBeTrue("Is submit icon present?");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsEmailInputPresent", browserName, homePage.IsEmailInputPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, "IsSubmitIconPresent", browserName, homePage.IsSubmitIconPresent()));
             foreach (var link in additionalLinks)
             {
-                homePage.IsAddtionalLinksPresentByLinkName(link).ShouldBeTrue($"Is {link} header present");
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 1, $"IsAddtionalLinksPresentByLinkName {link}", browserName, homePage.IsAddtionalLinksPresentByLinkName(link)));
             }
         }
 
-
-        [TearDown]
-        public void TestCleanUp()
+        [Test]
+        [TestCaseSource(typeof(TraditionalTestBase), nameof(BrowserToRunWith))]
+        public void Verify_Product_detail_page(string browserName)
         {
-            SiteDriver.Close();
+            Setup(browserName);
+            Start(Urls.Version2);
+
+            productPage = homePage.ClickOnProductImageByProductName("Appli Air x Night");
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsPageHeaderPresent", browserName, productPage.IsPageHeaderPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsAppliFashionLogoPresent", browserName, productPage.IsAppliFashionLogoPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMainHeaderPresent Home", browserName, productPage.IsMainHeaderPresent("HOME")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMainHeaderPresent MEN", browserName, productPage.IsMainHeaderPresent("MEN")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMainHeaderPresent WOMEN", browserName, productPage.IsMainHeaderPresent("WOMEN")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMainHeaderPresent RUNNING", browserName, productPage.IsMainHeaderPresent("RUNNING")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMainHeaderPresent TRAINING", browserName, productPage.IsMainHeaderPresent("TRAINING")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSearchInputPresent", browserName, productPage.IsSearchInputPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSearchButtonPresent", browserName, productPage.IsSearchButtonPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsAccountIconPresentByIconName ", browserName, productPage.IsAccountWishlistIconPresentByIconName("Account")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsWishListIconPresentByIconName ", browserName, productPage.IsAccountWishlistIconPresentByIconName("Wishlist")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsCartIconPresent", browserName, productPage.IsCartIconPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsCartQuantityPresent", browserName, productPage.IsCartQuantityPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsProductImagePresent", browserName, productPage.IsProductImagePresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsProductStarReviewPresent", browserName, productPage.IsProductStarReviewPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "Is Size label present", browserName, productPage.IsProductDetailLabel("DIV__row__88")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "Is Quantity label present", browserName, productPage.IsProductDetailLabel("DIV__row__98")));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsProductReviewPresent", browserName, productPage.IsProductReviewPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSizeInputPresent", browserName, productPage.IsSizeInputPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSelectedsizeSmall", browserName, productPage.IsSelectedsizeSmall()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsQuantityIncreaseIconPresent", browserName, productPage.IsQuantityIncreaseIconPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsQuantityDecreaseIconPresent", browserName, productPage.IsQuantityDecreaseIconPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsQuantityPresent", browserName, productPage.IsQuantityPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsDiscountBannerPresent", browserName, productPage.IsDiscountBannerPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsNewPriceCorrect", browserName, productPage.IsNewPriceCorrect()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsOldPriceCorrect", browserName, productPage.IsOldPriceCorrect()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsAddToCartButtonPresent", browserName, productPage.IsAddToCartButtonPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsProductDescriptionPresent", browserName, productPage.IsProductDescriptionPresent()));
+
+
+            var footerheaders = new List<string> { "Quick Links", "Contacts", "Keep in touch" };
+            var additionalLinks = new List<string> { "Terms and conditions", "Privacy" };
+            foreach (var header in footerheaders)
+            {
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, $"IsFooterHeaderPresentByFooterName {header}", browserName, productPage.IsFooterHeaderPresentByFooterName(header)));
+            }
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsHomeIconPresentInContacts", browserName, productPage.IsHomeIconPresentInContacts()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "ISContactLocationPresent", browserName, productPage.ISContactLocationPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsMailIconPresentInContact", browserName, productPage.IsMailIconPresentInContact()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsEmailAddressOfContactPresent", browserName, productPage.IsEmailAddressOfContactPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSelectedLanguaueEnglish", browserName, productPage.IsSelectedLanguaueEnglish()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsCurrencyDollars", browserName, productPage.IsCurrencyDollars()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsEmailInputPresent", browserName, productPage.IsEmailInputPresent()));
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsSubmitIconPresent", browserName, productPage.IsSubmitIconPresent()));
+            foreach (var link in additionalLinks)
+            {
+                Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, $"IsAddtionalLinksPresentByLinkName {link}", browserName, productPage.IsAddtionalLinksPresentByLinkName(link)));
+            }
+            Assert.IsTrue(HackathonReport("traditional-V2-TestResults.txt", 3, "IsApplitools2020Present", browserName, productPage.IsApplitools2020Present()));
         }
     }
 }

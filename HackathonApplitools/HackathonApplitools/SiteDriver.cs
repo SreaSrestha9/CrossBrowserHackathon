@@ -14,20 +14,32 @@ namespace HackathonApplitools
     public static class SiteDriver
     {
         private static IWebDriver _driver;
+       
         private static IJavaScriptExecutor _javascriptexecutor;
 
         public static IWebDriver Driver
         {
             get
             {
-                return _driver;
+                return TraditionalTestBase.Driver;
             }
+
            
+        }
+
+        public static IWebDriver _Driver
+        {
+            get { return _driver; }
+        }
+
+        public static IJavaScriptExecutor JsExecutorModern
+        {
+            get { return _driver as IJavaScriptExecutor; }
         }
 
         public static IJavaScriptExecutor JsExecutor
         {
-            get { return _driver as IJavaScriptExecutor; }
+            get { return Driver as IJavaScriptExecutor; }
         }
 
         public static void Start(string url)
@@ -40,6 +52,8 @@ namespace HackathonApplitools
             _javascriptexecutor = (IJavaScriptExecutor)_driver;
         }
 
+        
+
         public static void Close()
         {
             _driver.Quit();
@@ -48,7 +62,7 @@ namespace HackathonApplitools
         {
             try
             {
-                FindElement(select, selector, _driver, timeOut);
+                FindElement(select, selector, Driver, timeOut);
                 return true;
             }
             catch (Exception ex)
@@ -60,14 +74,19 @@ namespace HackathonApplitools
             }
         }
 
-        internal static IWebElement FindElement(string select, How selector)
+        internal static IWebElement FindElementModern(string select, How selector)
         {
             return FindElement(select, selector, _driver);
         }
 
+        internal static IWebElement FindElement(string select, How selector)
+        {
+            return FindElement(select, selector, Driver);
+        }
+
         public static IEnumerable<IWebElement> FindElements(string select, How selector)
         {
-            return FindElements(select, selector, _driver);
+            return FindElements(select, selector, Driver);
         }
 
         internal static IWebElement FindElement(string select, How selector, ISearchContext context, int elementTimeOut = 2000)
@@ -99,7 +118,7 @@ namespace HackathonApplitools
             if (elementTimeOut == 0)
                 return context.FindElement(locator);
 
-            var wait = new WebDriverWait(new SystemClock(), _driver, TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(2000));
+            var wait = new WebDriverWait(new SystemClock(), Driver, TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(2000));
             IWebElement webElement = null;
             wait.Until(driver =>
             {
@@ -117,13 +136,43 @@ namespace HackathonApplitools
             });
             return webElement;
         }
-        
+
+        public static void WaitForConditionModern(Func<bool> f, int milliSec = 0)
+        {
+
+            milliSec = (int) ((milliSec == 0) ? 100 * 1000 : milliSec);
+            var wait = new WebDriverWait(_driver, TimeSpan.FromMilliseconds(milliSec));
+            try
+            {
+                wait.Until(d =>
+                {
+                    try
+                    {
+                        return f();
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                });
+            }
+            catch (UnhandledAlertException ex)
+            {
+                Console.Out.WriteLine("unhandled exception" + ex.Message);
+            }
+
+            catch (Exception ex)
+            {
+                Console.Out.WriteLine(ex.Message);
+            }
+
+        }
 
         public static void WaitForCondition(Func<bool> f, int milliSec = 0)
         {
 
             milliSec = (int)((milliSec == 0) ? 100 * 1000 : milliSec);
-            var wait = new WebDriverWait(_driver, TimeSpan.FromMilliseconds(milliSec));
+            var wait = new WebDriverWait(Driver, TimeSpan.FromMilliseconds(milliSec));
             try
             {
                 wait.Until(d =>
@@ -178,7 +227,7 @@ namespace HackathonApplitools
             if (elementTimeOut == 0)
                 return context.FindElements(locator);
 
-            var wait = new WebDriverWait(new SystemClock(), _driver, TimeSpan.FromMilliseconds(1000), TimeSpan.FromMilliseconds(1000));
+            var wait = new WebDriverWait(new SystemClock(), Driver, TimeSpan.FromMilliseconds(1000), TimeSpan.FromMilliseconds(1000));
             IEnumerable<IWebElement> webElement = null;
             wait.Until(driver =>
             {
@@ -199,7 +248,7 @@ namespace HackathonApplitools
 
         public static List<string> FindDisplayedElementsText(string select, How selector)
         {
-            return FindElements(select, selector, _driver).Where(e => e.Displayed).Select(e => e.Text).ToList();
+            return FindElements(select, selector, Driver).Where(e => e.Displayed).Select(e => e.Text).ToList();
         }
 
         public static bool IsInAscendingOrder<T>(this List<T> values)

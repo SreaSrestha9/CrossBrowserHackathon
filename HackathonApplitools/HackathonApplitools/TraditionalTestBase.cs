@@ -14,13 +14,22 @@ namespace HackathonApplitools
 {
     public class TraditionalTestBase
     {
-        public IWebDriver driver;
+        private static IWebDriver driver;
         public HomePage homePage;
+        private static IJavaScriptExecutor _javascriptexecutor;
+        public ProductPage productPage;
+        public static IWebDriver Driver
+        {
+            get
+            {
+                return driver;
+            }
+            set { driver = value; }
 
-        
+        }
         public static IEnumerable<string> BrowserToRunWith()
         {
-            string[] browsers = { "chrome", "firefox", "edge", "chrometablet", "firefoxtablet", "edgetablet", "" };
+            string[] browsers = { "chrome", "firefox", "edge", "chrometablet", "firefoxtablet", "edgetablet", "mobile" };
             foreach (var b in browsers)
             {
                 yield return b;
@@ -28,20 +37,20 @@ namespace HackathonApplitools
 
         }
 
-        public bool HackathonReport(int task, string testName, string browser, bool compatisonResult)
+        public bool HackathonReport(string path, int task, string testName, string browser, bool comparisionResult)
         {
-
-            using (StreamWriter fs = new StreamWriter("traditional-V1-TestResults.txt", true))
+            //"traditional-V1-TestResults.txt"
+            using (StreamWriter fs = new StreamWriter(path, true))
             {
                 string ReportContent = string.Format("Task: {0}, Test Name: {1}, Browser {2}, Status: {3}", task,
-                    testName, browser, compatisonResult);
+                    testName, browser, comparisionResult);
 
 
                 fs.WriteLine(ReportContent);
             }
 
             //returns the result so that it can be used for further Assertions in the test code.
-            return compatisonResult;
+            return comparisionResult;
         }
     
         public void Setup(string browserName)
@@ -78,7 +87,7 @@ namespace HackathonApplitools
                 driver = new EdgeDriver();
                 driver.Manage().Window.Size = new Size(768, 700);
             }
-            else
+            else if (browserName.Equals("mobile"))
             {
                 driver = new ChromeDriver();
                 driver.Manage().Window.Size = new Size(500, 700);
@@ -97,6 +106,6 @@ namespace HackathonApplitools
             driver.Quit();
         }
 
-
+        
     }
 }

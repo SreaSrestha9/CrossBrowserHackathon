@@ -30,9 +30,9 @@ namespace HackathonApplitools
         public void ShoppingExperienceTest()
         {
             homePage = new HomePage(Urls.Version1);
-            homePage.ClickOnFilterOptionByHeaderAndOption("colors", "Black");
-            homePage.ClickFilterButton();
-            _eyes.Open(homePage.Driver, "Filter Results", "Task 2", Resolution800);
+            homePage.ClickOnFilterOptionByHeaderAndOptionModern("colors", "Black");
+            homePage.ClickFilterButtonModern();
+            _eyes.Open(homePage._Driver, "Filter Results", "Task 2", Resolution800);
             _eyes.Check("Filter Results", Target.Region(By.Id("product_grid")).Fully());
         }
 
@@ -40,8 +40,8 @@ namespace HackathonApplitools
         public void ProductDetailTest()
         {
             homePage = new HomePage(Urls.Version1);
-            productPage = homePage.ClickOnProductImageByProductName("Appli Air x Night");
-            SiteDriver.WaitForCondition(productPage.IsPageHeaderPresent);
+            productPage = homePage.ClickOnProductImageByProductNameModern("Appli Air x Night");
+            SiteDriver.WaitForConditionModern(productPage.IsPageHeaderPresent);
             _eyes.Open(homePage.Driver, "Product Details test", "Task 3", Resolution800);
             _eyes.Check(Target.Window().Fully().WithName("Product Details test"));
         }
